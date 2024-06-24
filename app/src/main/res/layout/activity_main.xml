@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Screen.MainActivity">
+
+    <!--background -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/main_IMG_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@drawable/filed_beckground" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/hearts_layout"
+        android:layout_width="@dimen/hearts_width"
+        android:layout_height="@dimen/hearts_height"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/main_IMG_heart1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/main_img_heart" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/main_IMG_heart2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/main_img_heart" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/main_IMG_heart3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/main_img_heart" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/main_BTN_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft= "true"
+        android:layout_marginHorizontal="@dimen/bottom"
+        android:layout_marginBottom="@dimen/defult_marginbottom"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/blue_light_300"
+        app:icon="@drawable/leftarrow"
+        >
+
+    </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/main_BTN_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginHorizontal="@dimen/bottom"
+        android:layout_marginBottom="@dimen/defult_marginbottom"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/blue_light_300"
+        app:icon="@drawable/rightarrow"
+        >
+
+    </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+
+
+
+
+
+    <!-- matrix layout-->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/matrix_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/main_BTN_left"
+        android:layout_below="@id/hearts_layout">
+
+        <!-- col 0-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/col0"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_below="@id/hearts_layout"
+            android:layout_marginStart="@dimen/col_margin_start"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!--matrix[0][0]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos00"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[1][0]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[2][0]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[3][0]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[4][0] spongebob/jelly-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+            <!--matrix[5][0]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos50"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+            <!--matrix[6][0]   MARK:SPONGEBOB-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos60"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/player" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- col 1-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/col1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_below="@id/hearts_layout"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!--matrix[0][1]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[1][1]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[2][1]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[3][1]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+            <!--matrix[4][1]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos41"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[5][1]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos51"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[6][1] MARK:SPONGEBOB-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos61"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/player" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- col 2-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+
+            android:id="@+id/col2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_below="@id/hearts_layout"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!--matrix[0][2]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+            <!--matrix[1][2]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[2][2]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[3][2]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[4][2]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos42"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+            <!--matrix[5][2]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos52"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[6][2] MARK:SPONGEBOB-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos62"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/player" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <!-- col 3-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+
+            android:id="@+id/col3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_below="@id/hearts_layout"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!--matrix[0][3]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos03"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[1][3]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[2][3]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[3][3]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[4][3]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos43"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[5][3]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos53"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[6][3] MARK:SPONGBOB-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos63"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/player" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <!-- col 4-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+
+            android:id="@+id/col4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_below="@id/hearts_layout"
+            android:layout_marginEnd="@dimen/col_margin_start"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!--matrix[0][4]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos04"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[1][4]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[2][4]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[3][4]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[4][4]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos44"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[5][4]-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos54"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/jellyfish" />
+
+            <!--matrix[6][4] MARK:SPONGEBOB-->
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/game_IMG_jellyPos64"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/player" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>

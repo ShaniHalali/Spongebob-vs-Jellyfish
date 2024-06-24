@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sadspongebob"
+    tools:context=".Screen.EndActivity">
+
+    <!--Game over text-->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/end_game_LBL_gameOver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/game_over"
+        android:textColor="@color/black"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/game_over_face_above"
+        android:gravity="center"
+
+
+        />
+
+</RelativeLayout>

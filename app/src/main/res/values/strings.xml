@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Spongebob Vs Jellyfish</string>
+        <string name="LEFT">LEFT</string>
+        <string name="RIGHT">RIGHT</string>
+        <string name="game_over">LOSER!</string>
+
+    </resources>

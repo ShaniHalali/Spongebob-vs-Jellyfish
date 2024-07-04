@@ -17,9 +17,8 @@ import com.example.spongebobvsjellyfish.Logic.GameManager;
 import com.example.spongebobvsjellyfish.Models.Direction;
 import com.example.spongebobvsjellyfish.Models.SquareEntity;
 import com.example.spongebobvsjellyfish.Utilities.SignalManager;
-import com.google.android.material.button.MaterialButton;
+import com.example.spongebobvsjellyfish.Utilities.SoundPlayer;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
 public class MainActivity extends AppCompatActivity implements BoardUpdateListener {
@@ -32,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
     private GameManager gameManager;
     private final int ROWS=7;
     private final int COLS=5;
+    private SoundPlayer soundPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +42,19 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
         SignalManager.init(this);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        soundPlayer.stopSoundGame(R.raw.spongebobend);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        soundPlayer=new SoundPlayer(this);
+        soundPlayer.playSoundGame(R.raw.spongebobend);
+    }
+
     private void initGameManager() {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
@@ -50,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
             }
         }
 
-        gameManager = new GameManager();
+        gameManager = new GameManager(this);
         gameManager.setListener(this);
     }
 

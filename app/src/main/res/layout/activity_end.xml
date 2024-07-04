@@ -18,12 +18,25 @@
         android:textColor="@color/black"
         android:textSize="60sp"
         android:textStyle="bold"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/game_over_face_above"
+        android:layout_marginTop="550dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
+        />
 
-
+    <!--Play Again Button-->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/end_BTN_again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_light_300"
+        android:text="BACK TO MENU"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:cornerRadius="50dp"
+        android:layout_below="@id/end_game_LBL_gameOver"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         />
 
 </RelativeLayout>

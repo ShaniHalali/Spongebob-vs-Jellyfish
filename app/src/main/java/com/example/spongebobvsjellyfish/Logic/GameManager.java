@@ -7,23 +7,22 @@ import static com.example.spongebobvsjellyfish.Models.SquareEntity.JELLY_FISH;
 import static com.example.spongebobvsjellyfish.Models.SquareEntity.SPONGE_BOB;
 
 import android.content.Context;
-import android.os.Build;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
-import android.widget.Toast;
 
 
 import com.example.spongebobvsjellyfish.BoardUpdateListener;
 import com.example.spongebobvsjellyfish.Models.Direction;
 import com.example.spongebobvsjellyfish.Models.SquareEntity;
+import com.example.spongebobvsjellyfish.R;
 import com.example.spongebobvsjellyfish.Screen.MainActivity;
 import com.example.spongebobvsjellyfish.Utilities.SignalManager;
-import java.util.Random;
-import com.example.spongebobvsjellyfish.Utilities.SignalManager;
-public class GameManager {
+import com.example.spongebobvsjellyfish.Utilities.SoundPlayer;
 
+import java.util.Random;
+
+public class GameManager {
 
     public static final int ROWS = 7;
     public static final int COLS = 5;
@@ -37,11 +36,13 @@ public class GameManager {
     private boolean shouldStop = false;
     private int mLife = 3;
     private SignalManager signalManager;
+   private  SoundPlayer soundPlayer;
+    private Context context;
 
 
-    public GameManager(int life) {
+    public GameManager(Context context) {
         this();
-        mLife = life;
+        this.context=context;
 
 ;    }
 
@@ -49,6 +50,8 @@ public class GameManager {
         initBoard();
         startTimer();
     }
+
+
 
     public void setListener(BoardUpdateListener listener) {
         mListener = listener;
@@ -145,7 +148,7 @@ public class GameManager {
     }
 
 //MARK:ACTIVE MATRIX
-    private void moveJellyFish() {
+    private void moveJellyFish( ) {
         synchronized (locker) {
             //5 4 3 2 1 0
             for (int i = ROWS - 2; i >= 0; i--) {
@@ -160,8 +163,11 @@ public class GameManager {
                     int spongeBoBIndex = getSpongeBobIndex();
                     if (jellyFishIndex == spongeBoBIndex) {
                         hasCrash = true;
+                        soundPlayer = new SoundPlayer((MainActivity) this.context);
+                        soundPlayer.playSoundCrash(R.raw.electric);
                         SignalManager.getInstance().toast("OUCHHHHH, Be careful! ");
                         SignalManager.vibrate(500);
+
                         mLife--;
                         onLifeChanged();
                         if (mLife == 0) {

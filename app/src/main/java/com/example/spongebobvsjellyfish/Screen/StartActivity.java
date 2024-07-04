@@ -1,7 +1,5 @@
 package com.example.spongebobvsjellyfish.Screen;
 
-
-
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,27 +12,26 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.spongebobvsjellyfish.R;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
-
-public class EndActivity extends AppCompatActivity {
-    private ExtendedFloatingActionButton end_BTN_again;
+public class StartActivity extends AppCompatActivity {
+private ExtendedFloatingActionButton start_BTN_start;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_end);
+        setContentView(R.layout.activity_start);
         findViews();
         initViews();
 
     }
 
     private void initViews() {
-        end_BTN_again.setOnClickListener(view -> {
-            Intent mainIntent = new Intent(EndActivity.this, StartActivity.class);
+        start_BTN_start.setOnClickListener(view -> {
+            Intent mainIntent = new Intent(StartActivity.this, MainActivity.class);
             startActivity(mainIntent);
             finish();
         });
     }
 
     private void findViews() {
-        end_BTN_again = findViewById(R.id.end_BTN_again);
+        start_BTN_start = findViewById(R.id.start_BTN_start);
     }
 }

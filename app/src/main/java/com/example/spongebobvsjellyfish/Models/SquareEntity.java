@@ -5,5 +5,6 @@ public enum SquareEntity {
     EMPTY,
     JELLY_FISH,
     SPONGE_BOB,
+    KRABBY_PATTY,
 }
 

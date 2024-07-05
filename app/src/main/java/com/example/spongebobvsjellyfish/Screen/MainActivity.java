@@ -20,6 +20,7 @@ import com.example.spongebobvsjellyfish.Utilities.SignalManager;
 import com.example.spongebobvsjellyfish.Utilities.SoundPlayer;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.textview.MaterialTextView;
 
 public class MainActivity extends AppCompatActivity implements BoardUpdateListener {
 
@@ -32,30 +33,37 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
     private final int ROWS=7;
     private final int COLS=5;
     private SoundPlayer soundPlayer;
+    private ShapeableImageView[][] game_IMG_krabbyMatrix;
+    private MaterialTextView game_LBL_score;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
         initViews();
-        initGameManager();
+        // קבל את הערך של fastSpeed מה-Intent
+        boolean isFastMood = getIntent().getBooleanExtra("EXTRA_FAST_SPEED", false);
+
+        // השתמש ב-isFastMood כדי לאתחל את ה-GameManager
+        initGameManager(isFastMood);
         SignalManager.init(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        soundPlayer.stopSoundGame(R.raw.spongebobend);
+        soundPlayer.stopSoundGame(R.raw.game);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         soundPlayer=new SoundPlayer(this);
-        soundPlayer.playSoundGame(R.raw.spongebobend);
+        soundPlayer.playSoundGame(R.raw.game);
     }
 
-    private void initGameManager() {
+    private void initGameManager(boolean isFastMood) {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
                 game_IMG_JellyMatrix[i][j].setImageResource(R.drawable.jellyfish);
@@ -63,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
             }
         }
 
-        gameManager = new GameManager(this);
+        gameManager = new GameManager(this,isFastMood);
         gameManager.setListener(this);
     }
 
@@ -80,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
                 findViewById(R.id.main_IMG_heart2),
                 findViewById(R.id.main_IMG_heart1)
         };
+        // MARK:score
+        game_LBL_score=findViewById(R.id. game_LBL_score);
 
         //MARK:jellyfish matrix
         game_IMG_JellyMatrix = new ShapeableImageView[][]{
@@ -92,16 +102,28 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
                 {findViewById(R.id.game_IMG_jellyPos60), findViewById(R.id.game_IMG_jellyPos61), findViewById(R.id.game_IMG_jellyPos62), findViewById(R.id.game_IMG_jellyPos63), findViewById(R.id.game_IMG_jellyPos64)}
 
         };
+
+        game_IMG_krabbyMatrix = new ShapeableImageView[][]{
+                {findViewById(R.id.game_IMG_krabbyPos00), findViewById(R.id.game_IMG_krabbyPos01), findViewById(R.id.game_IMG_krabbyPos02), findViewById(R.id.game_IMG_krabbyPos03), findViewById(R.id.game_IMG_krabbyPos04)},
+                {findViewById(R.id.game_IMG_krabbyPos10), findViewById(R.id.game_IMG_krabbyPos11), findViewById(R.id.game_IMG_krabbyPos12), findViewById(R.id.game_IMG_krabbyPos13), findViewById(R.id.game_IMG_krabbyPos14)},
+                {findViewById(R.id.game_IMG_krabbyPos20), findViewById(R.id.game_IMG_krabbyPos21), findViewById(R.id.game_IMG_krabbyPos22), findViewById(R.id.game_IMG_krabbyPos23), findViewById(R.id.game_IMG_krabbyPos24)},
+                {findViewById(R.id.game_IMG_krabbyPos30), findViewById(R.id.game_IMG_krabbyPos31), findViewById(R.id.game_IMG_krabbyPos32), findViewById(R.id.game_IMG_krabbyPos33), findViewById(R.id.game_IMG_krabbyPos34)},
+                {findViewById(R.id.game_IMG_krabbyPos40), findViewById(R.id.game_IMG_krabbyPos41), findViewById(R.id.game_IMG_krabbyPos42), findViewById(R.id.game_IMG_krabbyPos43), findViewById(R.id.game_IMG_krabbyPos44)},
+                {findViewById(R.id.game_IMG_krabbyPos50), findViewById(R.id.game_IMG_krabbyPos51), findViewById(R.id.game_IMG_krabbyPos52), findViewById(R.id.game_IMG_krabbyPos53), findViewById(R.id.game_IMG_krabbyPos54)},
+                {findViewById(R.id.game_IMG_krabbyPos60), findViewById(R.id.game_IMG_krabbyPos61), findViewById(R.id.game_IMG_krabbyPos62), findViewById(R.id.game_IMG_krabbyPos63), findViewById(R.id.game_IMG_krabbyPos64)}
+        };
+
+
     }
 
     private void initViews() {
-        // MARK: Setting click listeners for player positions
+        // Setting click listeners for player positions
         main_BTN_left.setOnClickListener(view -> gameManager.updateSpongebobPlace(Direction.LEFT));
         main_BTN_right.setOnClickListener(view -> gameManager.updateSpongebobPlace(Direction.RIGHT));
-        // MARK:Setting the background image
+        // Setting the background image
         main_IMG_background.setImageResource(R.drawable.filed_beckground);
 
-        // MARK:Initializing the hearts visibility
+        // Initializing the hearts visibility
         for (AppCompatImageView heart : main_IMG_hearts) {
             heart.setVisibility(View.VISIBLE);
         }
@@ -126,6 +148,11 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
                         game_IMG_JellyMatrix[i][j].setVisibility(View.VISIBLE);
                         break;
                     }
+                    case KRABBY_PATTY: {
+                        game_IMG_JellyMatrix[i][j].setImageResource(R.drawable.krabby_patty);
+                        game_IMG_JellyMatrix[i][j].setVisibility(View.VISIBLE);
+                        break;
+                    }
                 }
             }
         }
@@ -139,10 +166,15 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
         for (int i = number + 1; i <= 3; i++) {
             main_IMG_hearts[i - 1].setVisibility(View.INVISIBLE);
         }
-    }
 
+    }
+    @Override
+    public void scoreAdd(int score){
+        game_LBL_score.setText(score+ ""); //set score text
+    }
     @Override
     public void onGameLost() {
+
         Intent endGameIntent = new Intent(MainActivity.this, EndActivity.class);
         startActivity(endGameIntent);
         finish();

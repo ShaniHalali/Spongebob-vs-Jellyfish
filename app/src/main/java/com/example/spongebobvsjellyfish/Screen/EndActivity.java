@@ -1,22 +1,18 @@
 package com.example.spongebobvsjellyfish.Screen;
 
-
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.spongebobvsjellyfish.R;
+import com.example.spongebobvsjellyfish.Utilities.SoundPlayer;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-
 
 public class EndActivity extends AppCompatActivity {
     private ExtendedFloatingActionButton end_BTN_again;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

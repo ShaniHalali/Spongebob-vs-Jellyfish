@@ -1,16 +1,13 @@
 package com.example.spongebobvsjellyfish.Logic;
 
-
-
 import static com.example.spongebobvsjellyfish.Models.SquareEntity.EMPTY;
 import static com.example.spongebobvsjellyfish.Models.SquareEntity.JELLY_FISH;
+import static com.example.spongebobvsjellyfish.Models.SquareEntity.KRABBY_PATTY;
 import static com.example.spongebobvsjellyfish.Models.SquareEntity.SPONGE_BOB;
 
 import android.content.Context;
-import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
-
 
 import com.example.spongebobvsjellyfish.BoardUpdateListener;
 import com.example.spongebobvsjellyfish.Models.Direction;
@@ -26,7 +23,7 @@ public class GameManager {
 
     public static final int ROWS = 7;
     public static final int COLS = 5;
-    private final Long TICK_TIMER = 1000L;
+    private  Long TICK_TIMER = 1100L;
     private final Random random = new Random();
     private final SquareEntity[][] mBoard = new SquareEntity[ROWS][COLS];
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -35,29 +32,28 @@ public class GameManager {
 
     private boolean shouldStop = false;
     private int mLife = 3;
+
     private SignalManager signalManager;
-   private  SoundPlayer soundPlayer;
+    private SoundPlayer soundPlayer;
     private Context context;
-
-
-    public GameManager(Context context) {
+    private int  mScore=0;
+    private boolean isFastMood;
+    public GameManager(Context context,boolean isFastMood) {
         this();
-        this.context=context;
-
-;    }
+        this.context = context;
+        this.isFastMood=isFastMood;
+    }
 
     public GameManager() {
         initBoard();
         startTimer();
     }
 
-
-
     public void setListener(BoardUpdateListener listener) {
         mListener = listener;
         onLifeChanged();
+        addScore();
     }
-
 
     private void initBoard() {
         for (int i = 0; i < ROWS; i++) {
@@ -65,36 +61,47 @@ public class GameManager {
                 mBoard[i][j] = EMPTY;
             }
         }
-        placeRandomJellyFishOnFirstLine();
-        mBoard[ROWS-1][2] = SPONGE_BOB; //AT THE MIDDLE
+        placeRandomEntitiesOnFirstLine();
+        mBoard[ROWS - 1][2] = SPONGE_BOB; // At the middle
     }
 
-    private void placeRandomJellyFishOnFirstLine() {
-        int jellyFishIndex = random.nextInt(COLS);
-        mBoard[0][jellyFishIndex] = JELLY_FISH;
-    }
-
-    private void clearJellyFishFromLastLine() {
+    private void placeRandomEntitiesOnFirstLine() {
+        //Clear the first line before placing new entities
         for (int i = 0; i < COLS; i++) {
-            if (mBoard[ROWS - 1][i] == JELLY_FISH) {
-                mBoard[ROWS - 1][i] = EMPTY;
-            }
+            mBoard[0][i] = EMPTY;
+        }
+
+        // Randomly place at the matrix -Jellyfish or Krabby Patties
+        int newFallingIndex = random.nextInt(COLS);
+        int entityType = random.nextInt(3); // 0 for Jellyfish, 1 for Krabby Patty, 3 for empty
+        if (entityType == 0) {
+            mBoard[0][ newFallingIndex ] = JELLY_FISH;
+        }else if (entityType == 1) {
+            mBoard[0][ newFallingIndex] = KRABBY_PATTY;
+        }else {
+            mBoard[0][ newFallingIndex] = EMPTY;
         }
     }
+    //  }
 
 
     private void startTimer() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                if(isFastMood){
+                    TICK_TIMER=700L;
+                };
                 if (!shouldStop) {
-                    moveJellyFish();
+                    moveEntities();
+                    if(!isFastMood){
+
+                    }
                     handler.postDelayed(this, TICK_TIMER);
                 }
             }
         }, TICK_TIMER);
     }
-
 
     public void updateSpongebobPlace(Direction direction) {
         synchronized (locker) {
@@ -121,23 +128,6 @@ public class GameManager {
             onUpdateBoard();
         }
     }
-
-    private void onUpdateBoard() {
-        if (mListener == null) {
-            return;
-        }
-        new Handler(Looper.getMainLooper()).post(() -> mListener.onBoardUpdated(mBoard));
-    }
-
-    private int getSpongeBobIndex() {
-        for (int i = 0; i < COLS; i++) {
-            if (mBoard[ROWS-1][i] == SPONGE_BOB) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     private int getJellyfishIndexByRow(int row) {
         for (int i = 0; i < COLS; i++) {
             if (mBoard[row][i] == JELLY_FISH) {
@@ -147,50 +137,121 @@ public class GameManager {
         return -1;
     }
 
-//MARK:ACTIVE MATRIX
-    private void moveJellyFish( ) {
+    private int getKrabbyPattyIndexByRow(int row) {
+        for (int i = 0; i < COLS; i++) {
+            if (mBoard[row][i] == KRABBY_PATTY) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    private void onUpdateBoard() {
+        if (mListener == null) {
+            return;
+        }
+        new Handler(Looper.getMainLooper()).post(() -> mListener.onBoardUpdated(mBoard));
+    }
+
+    private int getSpongeBobIndex() {
+        for (int i = 0; i < COLS; i++) {
+            if (mBoard[ROWS - 1][i] == SPONGE_BOB) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private void clearJellyFishFromLastLine() {
+        for (int i = 0; i < COLS; i++) {
+            if (mBoard[ROWS - 1][i] == JELLY_FISH) {
+                mBoard[ROWS - 1][i] = EMPTY;
+            }
+        }
+    }
+
+    private void clearKrabbyFromLastLine() {
+        for (int i = 0; i < COLS; i++) {
+            if (mBoard[ROWS - 1][i] == KRABBY_PATTY) {
+                mBoard[ROWS - 1][i] = EMPTY;
+            }
+        }
+    }
+
+    private void moveEntities() {
         synchronized (locker) {
-            //5 4 3 2 1 0
+
+            // Move Jellyfish
             for (int i = ROWS - 2; i >= 0; i--) {
-
                 int jellyFishIndex = getJellyfishIndexByRow(i);
-                if (jellyFishIndex == -1) {
-                    continue;
-                }
-                //For the dangerous row
-                boolean hasCrash = false;
-                if (i == ROWS - 2) {
-                    int spongeBoBIndex = getSpongeBobIndex();
-                    if (jellyFishIndex == spongeBoBIndex) {
-                        hasCrash = true;
-                        soundPlayer = new SoundPlayer((MainActivity) this.context);
-                        soundPlayer.playSoundCrash(R.raw.electric);
-                        SignalManager.getInstance().toast("OUCHHHHH, Be careful! ");
-                        SignalManager.vibrate(500);
+                if (jellyFishIndex != -1) {
+                    boolean hasCrash = false;
+                    // Check for crash with SpongeBob
+                    if (i == ROWS - 2) {
+                        int spongeBobIndex = getSpongeBobIndex();
+                        if (jellyFishIndex == spongeBobIndex) {
+                            hasCrash = true;
+                            handleJellyfishCrash();
+                             mBoard[i][jellyFishIndex] = EMPTY;
 
-                        mLife--;
-                        onLifeChanged();
-                        if (mLife == 0) {
-                            return;
+                            break;
                         }
                     }
-                }
-
-                mBoard[i][jellyFishIndex] = EMPTY;
-                if (!hasCrash) {
+                    mBoard[i][jellyFishIndex] = EMPTY;
                     mBoard[i + 1][jellyFishIndex] = JELLY_FISH;
                 }
             }
-        }
-        placeRandomJellyFishOnFirstLine();
-        clearJellyFishFromLastLine();
-        onUpdateBoard();
 
+            // Move Krabby Patties
+            for (int i = ROWS - 2; i >= 0; i--) {
+                int krabbyIndex = getKrabbyPattyIndexByRow(i);
+                if (krabbyIndex != -1) {
+                    // Check for collection with SpongeBob
+                    if (i == ROWS - 2) {
+                        int spongeBobIndex = getSpongeBobIndex();
+                        if (krabbyIndex == spongeBobIndex) {
+                            handleGetKrabbyPatty();
+                            mBoard[i][krabbyIndex] = EMPTY; // Remove Krabby Patty after collection
+                            continue; // Move to the next entity
+                        }
+                    }
+                    mBoard[i][krabbyIndex] = EMPTY;
+                    mBoard[i + 1][krabbyIndex] = KRABBY_PATTY;
+                }
+            }
+
+            // Place new Jellyfish and Krabby Patties
+            placeRandomEntitiesOnFirstLine();
+            clearJellyFishFromLastLine();
+            clearKrabbyFromLastLine();
+            onUpdateBoard();
+        }
+    }
+    private void handleJellyfishCrash() {
+        soundPlayer = new SoundPlayer((MainActivity) this.context);
+        soundPlayer.playSoundCrash(R.raw.electric);
+        SignalManager.getInstance().toast("OUCHHHHH, Be careful!");
+        SignalManager.vibrate(100);
+        mLife--;
+        onLifeChanged();
     }
 
+    private void handleGetKrabbyPatty() {
+        soundPlayer = new SoundPlayer((MainActivity) this.context);
+        soundPlayer.playSoundCrash(R.raw.krabby);
+        SignalManager.getInstance().toast("Yay!");
+        SignalManager.vibrate(100);
+        // Optional: Increase score or any other game logic
 
+        mScore+=10;
+        addScore();
+    }
 
+    private void addScore() {
+        if (mListener != null) {
+            mListener.scoreAdd(mScore);
 
+        }
+    }
 
 
     private void onLifeChanged() {
@@ -203,4 +264,3 @@ public class GameManager {
         }
     }
 }
-

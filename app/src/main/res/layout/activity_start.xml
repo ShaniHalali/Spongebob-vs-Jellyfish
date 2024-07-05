@@ -9,19 +9,47 @@
     android:background="@drawable/optionalbackround"
     tools:context=".Screen.StartActivity">
 
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/name_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:gravity="center"
+        android:hint="ENTER YOUR NAME"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true"
+        />
+
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/start_BTN_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_below="@id/name_input"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
         android:backgroundTint="@color/blue_light_300"
         android:textAlignment="center"
         android:text="@string/start_game"
         android:textSize="35sp"
         android:textStyle="bold"
         android:textColor="@color/purpule_400"
-        app:cornerRadius="50dp"
-        >
+        app:cornerRadius="50dp"/>
 
-    </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/speed_toggle_BTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/start_BTN_start"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/blue_light_300"
+        android:textAlignment="center"
+        android:text="ITS SLOW MOOD"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/purpule_400"
+        app:cornerRadius="50dp"/>
 </RelativeLayout>

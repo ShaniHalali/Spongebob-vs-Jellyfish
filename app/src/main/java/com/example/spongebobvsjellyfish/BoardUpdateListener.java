@@ -8,6 +8,8 @@ public interface BoardUpdateListener {
 
     void onChangedLife(int number);
 
+    void scoreAdd(int score);
+
     void onGameLost();
 
 }

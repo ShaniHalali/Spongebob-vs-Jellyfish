@@ -23,7 +23,7 @@ public class GameManager {
 
     public static final int ROWS = 7;
     public static final int COLS = 5;
-    private  Long TICK_TIMER = 1100L;
+    private  Long TICK_TIMER = 900L;
     private final Random random = new Random();
     private final SquareEntity[][] mBoard = new SquareEntity[ROWS][COLS];
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -38,6 +38,7 @@ public class GameManager {
     private Context context;
     private int  mScore=0;
     private boolean isFastMood;
+    private boolean fall=false;
     public GameManager(Context context,boolean isFastMood) {
         this();
         this.context = context;
@@ -70,19 +71,19 @@ public class GameManager {
         for (int i = 0; i < COLS; i++) {
             mBoard[0][i] = EMPTY;
         }
-
-        // Randomly place at the matrix -Jellyfish or Krabby Patties
-        int newFallingIndex = random.nextInt(COLS);
-        int entityType = random.nextInt(3); // 0 for Jellyfish, 1 for Krabby Patty, 3 for empty
-        if (entityType == 0) {
-            mBoard[0][ newFallingIndex ] = JELLY_FISH;
-        }else if (entityType == 1) {
-            mBoard[0][ newFallingIndex] = KRABBY_PATTY;
-        }else {
-            mBoard[0][ newFallingIndex] = EMPTY;
-        }
+        if(fall){
+    // Randomly place at the matrix -Jellyfish or Krabby Patties
+    int newFallingIndex = random.nextInt(COLS);
+    int entityType = random.nextInt(2); // 0 for Jellyfish, 1 for Krabby Patty, 3 for empty
+    if (entityType == 0) {
+        mBoard[0][ newFallingIndex ] = JELLY_FISH;
+    }else if (entityType == 1) {
+        mBoard[0][ newFallingIndex] = KRABBY_PATTY;
     }
-    //  }
+        }
+      fall=!fall;
+    }
+
 
 
     private void startTimer() {
@@ -90,7 +91,7 @@ public class GameManager {
             @Override
             public void run() {
                 if(isFastMood){
-                    TICK_TIMER=700L;
+                    TICK_TIMER=600L;
                 };
                 if (!shouldStop) {
                     moveEntities();

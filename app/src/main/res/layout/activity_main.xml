@@ -117,7 +117,8 @@
             android:layout_below="@id/hearts_layout"
             android:layout_marginStart="@dimen/col_margin_start"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:scaleType="fitCenter">
 
             <!--matrix[0][0]-->
             <com.google.android.material.imageview.ShapeableImageView
@@ -196,7 +197,8 @@
             android:layout_height="match_parent"
             android:layout_below="@id/hearts_layout"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:scaleType="fitCenter">
 
             <!--matrix[0][1]-->
             <com.google.android.material.imageview.ShapeableImageView
@@ -278,7 +280,8 @@
             android:layout_height="match_parent"
             android:layout_below="@id/hearts_layout"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:scaleType="fitCenter">
 
             <!--matrix[0][2]-->
             <com.google.android.material.imageview.ShapeableImageView
@@ -358,7 +361,8 @@
             android:layout_height="match_parent"
             android:layout_below="@id/hearts_layout"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:scaleType="fitCenter">
 
             <!--matrix[0][3]-->
             <com.google.android.material.imageview.ShapeableImageView
@@ -441,7 +445,8 @@
             android:layout_below="@id/hearts_layout"
             android:layout_marginEnd="@dimen/col_margin_start"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:scaleType="fitCenter">
 
             <!--matrix[0][4]-->
             <com.google.android.material.imageview.ShapeableImageView
@@ -516,422 +521,6 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <!--MARK:KRAPPY PATTY-->
-    <!-- matrix layout-->
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/matrix_kraaby_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/main_BTN_left"
-        android:layout_below="@id/hearts_layout">
 
-        <!-- col 0-->
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/matrix_kraaby_col0"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_below="@id/game_LBL_score"
-            android:layout_marginStart="@dimen/col_margin_start"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <!--matrix[0][0]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos00"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[1][0]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[2][0]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos20"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[3][0]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos30"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[4][0]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos40"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-            <!--matrix[5][0]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos50"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-            <!--matrix[6][1] MARK:SPONGEBOB-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos60"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <!-- col 1-->
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/matrix_kraaby_col1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_below="@id/game_LBL_score"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <!--matrix[0][1]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos01"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[1][1]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[2][1]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos21"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[3][1]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos31"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-            <!--matrix[4][1]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos41"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[5][1]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos51"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[6][1] MARK:SPONGEBOB-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos61"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <!-- col 2-->
-        <androidx.appcompat.widget.LinearLayoutCompat
-
-            android:id="@+id/matrix_krabby_col2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_below="@id/game_LBL_score"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <!--matrix[0][2]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos02"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-            <!--matrix[1][2]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[2][2]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos22"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[3][2]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos32"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[4][2]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos42"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-            <!--matrix[5][2]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos52"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[6][2] MARK:SPONGEBOB-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos62"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-        <!-- col 3-->
-        <androidx.appcompat.widget.LinearLayoutCompat
-
-            android:id="@+id/matrix_krabby_col3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_below="@id/game_LBL_score"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <!--matrix[0][3]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos03"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[1][3]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos13"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[2][3]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos23"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[3][3]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos33"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[4][3]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos43"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[5][3]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos53"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[6][3] MARK:SPONGBOB-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos63"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-        <!-- col 4-->
-        <androidx.appcompat.widget.LinearLayoutCompat
-
-            android:id="@+id/matrix_krabby_col4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_below="@id/game_LBL_score"
-            android:layout_marginEnd="@dimen/col_margin_start"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <!--matrix[0][4]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos04"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[1][4]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[2][4]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos24"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[3][4]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos34"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[4][4]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos44"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[5][4]-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos54"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-            <!--matrix[6][4] MARK:SPONGBOB-->
-            <com.google.android.material.imageview.ShapeableImageView
-
-                android:id="@+id/game_IMG_krabbyPos64"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/krabby_patty" />
-
-
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </RelativeLayout>

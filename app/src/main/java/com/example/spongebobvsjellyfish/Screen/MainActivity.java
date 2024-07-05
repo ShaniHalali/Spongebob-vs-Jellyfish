@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
     private final int ROWS=7;
     private final int COLS=5;
     private SoundPlayer soundPlayer;
-    private ShapeableImageView[][] game_IMG_krabbyMatrix;
+  //  private ShapeableImageView[][] game_IMG_krabbyMatrix;
     private MaterialTextView game_LBL_score;
 
     @Override
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
                 {findViewById(R.id.game_IMG_jellyPos60), findViewById(R.id.game_IMG_jellyPos61), findViewById(R.id.game_IMG_jellyPos62), findViewById(R.id.game_IMG_jellyPos63), findViewById(R.id.game_IMG_jellyPos64)}
 
         };
-
+/*
         game_IMG_krabbyMatrix = new ShapeableImageView[][]{
                 {findViewById(R.id.game_IMG_krabbyPos00), findViewById(R.id.game_IMG_krabbyPos01), findViewById(R.id.game_IMG_krabbyPos02), findViewById(R.id.game_IMG_krabbyPos03), findViewById(R.id.game_IMG_krabbyPos04)},
                 {findViewById(R.id.game_IMG_krabbyPos10), findViewById(R.id.game_IMG_krabbyPos11), findViewById(R.id.game_IMG_krabbyPos12), findViewById(R.id.game_IMG_krabbyPos13), findViewById(R.id.game_IMG_krabbyPos14)},
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
                 {findViewById(R.id.game_IMG_krabbyPos60), findViewById(R.id.game_IMG_krabbyPos61), findViewById(R.id.game_IMG_krabbyPos62), findViewById(R.id.game_IMG_krabbyPos63), findViewById(R.id.game_IMG_krabbyPos64)}
         };
 
-
+*/
     }
 
     private void initViews() {

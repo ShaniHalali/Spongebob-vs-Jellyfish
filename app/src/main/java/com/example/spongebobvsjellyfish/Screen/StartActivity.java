@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.spongebobvsjellyfish.R;
 import com.example.spongebobvsjellyfish.Utilities.SoundPlayer;
@@ -16,7 +18,12 @@ public class StartActivity extends AppCompatActivity {
     private SoundPlayer soundPlayer;
     private Context context;
     private boolean isFast = false;
-    private boolean fastSpeed=false;
+    private boolean fastSpeed = false;
+    private SwitchCompat start_slide_fast;
+    private SwitchCompat start_slide_sensor;
+    private boolean sensorMood=true;
+    private AppCompatEditText start_editText_nameInput;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,29 +35,36 @@ public class StartActivity extends AppCompatActivity {
     private void initViews() {
         start_BTN_start.setOnClickListener(view -> {
             Intent mainIntent = new Intent(StartActivity.this, MainActivity.class);
-            //  fastSpeed -Intent
+            // Pass fastSpeed as an extra to MainActivity
             mainIntent.putExtra("EXTRA_FAST_SPEED", fastSpeed);
+            mainIntent.putExtra("EXTRA_SENSOR_MOOD", sensorMood);
             startActivity(mainIntent);
             finish();
         });
 
-        speed_toggle_BTN.setOnClickListener(view -> {
-            if (isFast) {
-                speed_toggle_BTN.setText("ITS SLOW  MOOD");
-                fastSpeed=false;
-            } else {
-                speed_toggle_BTN.setText("ITS  FAST  MOOD");
-                fastSpeed=true;
-            }
-            isFast = !isFast;
+        //---------- fast mood
+        start_slide_fast.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            fastSpeed = isChecked;
         });
+
+        // Set fastSpeed to true if the switch is already on when the activity is created
+        fastSpeed = start_slide_fast.isChecked();
+
+        //---------- sensor mood
+        start_slide_sensor.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            sensorMood = isChecked;
+        });
+
+        // Set fastSpeed to true if the switch is already on when the activity is created
+        sensorMood =  start_slide_sensor.isChecked();
     }
 
-    private boolean isFastMood(){
-        return fastSpeed;// true or false
-    }
+
+
     private void findViews() {
         start_BTN_start = findViewById(R.id.start_BTN_start);
-        speed_toggle_BTN = findViewById(R.id.speed_toggle_BTN);
+        start_slide_sensor = findViewById(R.id.start_slide_sensor);
+        start_slide_fast = findViewById(R.id.start_slide_fast);
+        start_editText_nameInput=findViewById(R.id.start_editText_nameInput);
     }
 }

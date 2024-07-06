@@ -3,6 +3,9 @@ package com.example.spongebobvsjellyfish.Screen;
 
 
 
+import static com.example.spongebobvsjellyfish.Models.Direction.LEFT;
+import static com.example.spongebobvsjellyfish.Models.Direction.RIGHT;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
 
+import com.example.spongebobvsjellyfish.Interfaces.MoveCallback;
 import com.example.spongebobvsjellyfish.R;
 import com.example.spongebobvsjellyfish.BoardUpdateListener;
 import com.example.spongebobvsjellyfish.Logic.GameManager;
 import com.example.spongebobvsjellyfish.Models.Direction;
 import com.example.spongebobvsjellyfish.Models.SquareEntity;
+import com.example.spongebobvsjellyfish.Utilities.MoveDetector;
 import com.example.spongebobvsjellyfish.Utilities.SignalManager;
 import com.example.spongebobvsjellyfish.Utilities.SoundPlayer;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
     private SoundPlayer soundPlayer;
   //  private ShapeableImageView[][] game_IMG_krabbyMatrix;
     private MaterialTextView game_LBL_score;
+    private MoveDetector moveDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +48,48 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
         setContentView(R.layout.activity_main);
         findViews();
         initViews();
-        // קבל את הערך של fastSpeed מה-Intent
+        // get the value of speedMood and sensorMood from Intent
         boolean isFastMood = getIntent().getBooleanExtra("EXTRA_FAST_SPEED", false);
-
-        // השתמש ב-isFastMood כדי לאתחל את ה-GameManager
-        initGameManager(isFastMood);
+        boolean isSensorMood = getIntent().getBooleanExtra("EXTRA_SENSOR_MOOD", false);
+        // use isFastMood and  isSensorMood to invilaize GameManager
+        initGameManager(isFastMood,isSensorMood);
         SignalManager.init(this);
+        if(isSensorMood){
+            initMoveDerector();
+        }
+
+    }
+
+    private void initMoveDerector() {
+        moveDetector = new MoveDetector(this,
+                new MoveCallback() {
+                    @Override
+                    public void moveRight() {
+                       gameManager.updateSpongebobPlace(RIGHT);
+                    }
+
+                    @Override
+                    public void moveLeft() {
+                        gameManager.updateSpongebobPlace(LEFT);
+                    }
+                    @Override
+                    public void moveUp() {
+
+                    }
+                    @Override
+                    public void moveDown() {
+
+                    }
+                }
+        );
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         soundPlayer.stopSoundGame(R.raw.game);
+        moveDetector.stop();
+
     }
 
     @Override
@@ -61,9 +97,10 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
         super.onResume();
         soundPlayer=new SoundPlayer(this);
         soundPlayer.playSoundGame(R.raw.game);
+        moveDetector.start();
     }
 
-    private void initGameManager(boolean isFastMood) {
+    private void initGameManager(boolean isFastMood, boolean isSensorMood) {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
                 game_IMG_JellyMatrix[i][j].setImageResource(R.drawable.jellyfish);
@@ -71,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
             }
         }
 
-        gameManager = new GameManager(this,isFastMood);
+        gameManager = new GameManager(this,isFastMood,isSensorMood);
         gameManager.setListener(this);
     }
 
@@ -119,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
     private void initViews() {
         // Setting click listeners for player positions
         main_BTN_left.setOnClickListener(view -> gameManager.updateSpongebobPlace(Direction.LEFT));
-        main_BTN_right.setOnClickListener(view -> gameManager.updateSpongebobPlace(Direction.RIGHT));
+        main_BTN_right.setOnClickListener(view -> gameManager.updateSpongebobPlace(RIGHT));
         // Setting the background image
         main_IMG_background.setImageResource(R.drawable.filed_beckground);
 

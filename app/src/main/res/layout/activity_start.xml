@@ -10,10 +10,10 @@
     tools:context=".Screen.StartActivity">
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/name_input"
+        android:id="@+id/start_editText_nameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="180dp"
         android:gravity="center"
         android:hint="ENTER YOUR NAME"
         android:inputType="textPersonName"
@@ -27,7 +27,7 @@
         android:id="@+id/start_BTN_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/name_input"
+        android:layout_below="@id/start_editText_nameInput"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/blue_light_300"
@@ -38,18 +38,64 @@
         android:textColor="@color/purpule_400"
         app:cornerRadius="50dp"/>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/speed_toggle_BTN"
+    <LinearLayout
+        android:id="@+id/sensor_mood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/start_BTN_start"
+        android:layout_below="@+id/start_BTN_start"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="@color/blue_light_300"
-        android:textAlignment="center"
-        android:text="ITS SLOW MOOD"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/purpule_400"
-        app:cornerRadius="50dp"/>
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SENSOR MOOD:"
+            android:textColor="@color/purpule_400"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/start_slide_sensor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/white"
+            android:buttonTint="@color/white"
+            android:thumb="@drawable/thumb"
+            app:track="@drawable/track"
+            app:showText="true"
+            android:textOn="on"
+            android:textOff="off"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sensor_mood"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FAST MOOD:"
+            android:textColor="@color/purpule_400"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/start_slide_fast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/white"
+            android:buttonTint="@color/white"
+            android:thumb="@drawable/thumb"
+            app:track="@drawable/track"
+            app:showText="true"
+            android:textOn="on"
+            android:textOff="off"/>
+    </LinearLayout>
 </RelativeLayout>

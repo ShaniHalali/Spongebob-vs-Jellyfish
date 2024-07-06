@@ -14,6 +14,7 @@ import com.example.spongebobvsjellyfish.Models.Direction;
 import com.example.spongebobvsjellyfish.Models.SquareEntity;
 import com.example.spongebobvsjellyfish.R;
 import com.example.spongebobvsjellyfish.Screen.MainActivity;
+import com.example.spongebobvsjellyfish.Utilities.MoveDetector;
 import com.example.spongebobvsjellyfish.Utilities.SignalManager;
 import com.example.spongebobvsjellyfish.Utilities.SoundPlayer;
 
@@ -39,10 +40,13 @@ public class GameManager {
     private int  mScore=0;
     private boolean isFastMood;
     private boolean fall=false;
-    public GameManager(Context context,boolean isFastMood) {
+    private boolean isSensorMood;
+    private MoveDetector moveDetector;
+    public GameManager(Context context,boolean isFastMood,boolean isSensorMood) {
         this();
         this.context = context;
         this.isFastMood=isFastMood;
+        this.isSensorMood=isSensorMood;
     }
 
     public GameManager() {
@@ -91,7 +95,7 @@ public class GameManager {
             @Override
             public void run() {
                 if(isFastMood){
-                    TICK_TIMER=600L;
+                    TICK_TIMER=400L;
                 };
                 if (!shouldStop) {
                     moveEntities();
@@ -108,26 +112,35 @@ public class GameManager {
         synchronized (locker) {
             int fromBobfogIndex = getSpongeBobIndex();
             int toBobsfogIndex = 0;
-            switch (direction) {
-                case LEFT: {
-                    if (fromBobfogIndex == 0) {
-                        return;
+            //if(!isSensorMood){
+                switch (direction) {
+                    case LEFT: {
+                        if (fromBobfogIndex == 0) {
+                            return;
+                        }
+                        toBobsfogIndex = fromBobfogIndex - 1;
+                        break;
                     }
-                    toBobsfogIndex = fromBobfogIndex - 1;
-                    break;
-                }
-                case RIGHT: {
-                    if (fromBobfogIndex == COLS - 1) {
-                        return;
+                    case RIGHT: {
+                        if (fromBobfogIndex == COLS - 1) {
+                            return;
+                        }
+                        toBobsfogIndex = fromBobfogIndex + 1;
+                        break;
                     }
-                    toBobsfogIndex = fromBobfogIndex + 1;
-                    break;
                 }
+                mBoard[ROWS - 1][fromBobfogIndex] = EMPTY;
+                mBoard[ROWS - 1][toBobsfogIndex] = SPONGE_BOB;
+                onUpdateBoard();
+          //  }else
+              {
+                //sensorMood on !!!
+
+
             }
-            mBoard[ROWS - 1][fromBobfogIndex] = EMPTY;
-            mBoard[ROWS - 1][toBobsfogIndex] = SPONGE_BOB;
-            onUpdateBoard();
-        }
+
+            }
+
     }
     private int getJellyfishIndexByRow(int row) {
         for (int i = 0; i < COLS; i++) {
@@ -153,7 +166,7 @@ public class GameManager {
         new Handler(Looper.getMainLooper()).post(() -> mListener.onBoardUpdated(mBoard));
     }
 
-    private int getSpongeBobIndex() {
+    public int getSpongeBobIndex() {
         for (int i = 0; i < COLS; i++) {
             if (mBoard[ROWS - 1][i] == SPONGE_BOB) {
                 return i;

@@ -76,16 +76,16 @@ public class GameManager {
             mBoard[0][i] = EMPTY;
         }
         if(fall){
-    // Randomly place at the matrix -Jellyfish or Krabby Patties
-    int newFallingIndex = random.nextInt(COLS);
-    int entityType = random.nextInt(2); // 0 for Jellyfish, 1 for Krabby Patty, 3 for empty
-    if (entityType == 0) {
-        mBoard[0][ newFallingIndex ] = JELLY_FISH;
-    }else if (entityType == 1) {
-        mBoard[0][ newFallingIndex] = KRABBY_PATTY;
-    }
+            // Randomly place at the matrix -Jellyfish or Krabby Patties
+            int newFallingIndex = random.nextInt(COLS);
+            int entityType = random.nextInt(2); // 0 for Jellyfish, 1 for Krabby Patty, 3 for empty
+            if (entityType == 0) {
+                mBoard[0][ newFallingIndex ] = JELLY_FISH;
+            }else if (entityType == 1) {
+                mBoard[0][ newFallingIndex] = KRABBY_PATTY;
+            }
         }
-      fall=!fall;
+        fall=!fall;
     }
 
 
@@ -112,7 +112,7 @@ public class GameManager {
         synchronized (locker) {
             int fromBobfogIndex = getSpongeBobIndex();
             int toBobsfogIndex = 0;
-            //if(!isSensorMood){
+          //  if(!isSensorMood) {
                 switch (direction) {
                     case LEFT: {
                         if (fromBobfogIndex == 0) {
@@ -132,14 +132,12 @@ public class GameManager {
                 mBoard[ROWS - 1][fromBobfogIndex] = EMPTY;
                 mBoard[ROWS - 1][toBobsfogIndex] = SPONGE_BOB;
                 onUpdateBoard();
-          //  }else
-              {
-                //sensorMood on !!!
-
 
             }
 
-            }
+
+
+      //  }
 
     }
     private int getJellyfishIndexByRow(int row) {
@@ -205,7 +203,7 @@ public class GameManager {
                         if (jellyFishIndex == spongeBobIndex) {
                             hasCrash = true;
                             handleJellyfishCrash();
-                             mBoard[i][jellyFishIndex] = EMPTY;
+                            mBoard[i][jellyFishIndex] = EMPTY;
 
                             break;
                         }

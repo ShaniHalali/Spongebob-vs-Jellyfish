@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
   //  private ShapeableImageView[][] game_IMG_krabbyMatrix;
     private MaterialTextView game_LBL_score;
     private MoveDetector moveDetector;
-
+    private boolean isFastMood ;
+    private boolean isSensorMood;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,55 +50,63 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
         findViews();
         initViews();
         // get the value of speedMood and sensorMood from Intent
-        boolean isFastMood = getIntent().getBooleanExtra("EXTRA_FAST_SPEED", false);
-        boolean isSensorMood = getIntent().getBooleanExtra("EXTRA_SENSOR_MOOD", false);
+         isFastMood = getIntent().getBooleanExtra("EXTRA_FAST_SPEED", false);
+         isSensorMood = getIntent().getBooleanExtra("EXTRA_SENSOR_MOOD", false);
+
         // use isFastMood and  isSensorMood to invilaize GameManager
         initGameManager(isFastMood,isSensorMood);
         SignalManager.init(this);
-        if(isSensorMood){
-            initMoveDerector();
-        }
+        initMoveDerector();
 
     }
 
     private void initMoveDerector() {
-        moveDetector = new MoveDetector(this,
-                new MoveCallback() {
-                    @Override
-                    public void moveRight() {
-                       gameManager.updateSpongebobPlace(RIGHT);
-                    }
 
-                    @Override
-                    public void moveLeft() {
-                        gameManager.updateSpongebobPlace(LEFT);
-                    }
-                    @Override
-                    public void moveUp() {
+            moveDetector = new MoveDetector(this,
+                    new MoveCallback() {
+                        @Override
+                        public void moveRight() {
 
-                    }
-                    @Override
-                    public void moveDown() {
+                            gameManager.updateSpongebobPlace(RIGHT);
+                        }
 
+                        @Override
+                        public void moveLeft() {
+
+                            gameManager.updateSpongebobPlace(LEFT);
+                        }
+                        @Override
+                        public void moveUp() {
+
+                        }
+                        @Override
+                        public void moveDown() {
+
+                        }
                     }
-                }
-        );
-    }
+            );
+        }
+
+
 
     @Override
     protected void onPause() {
         super.onPause();
         soundPlayer.stopSoundGame(R.raw.game);
-        moveDetector.stop();
+        if (isSensorMood) {
+            moveDetector.stop();
+        }
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        soundPlayer=new SoundPlayer(this);
+        soundPlayer = new SoundPlayer(this);
         soundPlayer.playSoundGame(R.raw.game);
-        moveDetector.start();
+        if (isSensorMood) {
+            moveDetector.start();
+        }
     }
 
     private void initGameManager(boolean isFastMood, boolean isSensorMood) {
@@ -116,8 +125,10 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
         //!MARK:background
         main_IMG_background = findViewById(R.id.main_IMG_background);
         //MARK:btn
-        main_BTN_left = findViewById(R.id.main_BTN_left);
-        main_BTN_right = findViewById(R.id.main_BTN_right);
+            main_BTN_left = findViewById(R.id.main_BTN_left);
+            main_BTN_right = findViewById(R.id.main_BTN_right);
+
+
         //!---------images
         //MARK:hearts
         main_IMG_hearts = new AppCompatImageView[]{
@@ -155,8 +166,11 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
 
     private void initViews() {
         // Setting click listeners for player positions
+
         main_BTN_left.setOnClickListener(view -> gameManager.updateSpongebobPlace(Direction.LEFT));
         main_BTN_right.setOnClickListener(view -> gameManager.updateSpongebobPlace(RIGHT));
+
+
         // Setting the background image
         main_IMG_background.setImageResource(R.drawable.filed_beckground);
 

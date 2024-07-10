@@ -1,7 +1,6 @@
 package com.example.spongebobvsjellyfish.Utilities;
 
 
-
 import android.content.Context;
 import android.os.Build;
 import android.os.VibrationEffect;

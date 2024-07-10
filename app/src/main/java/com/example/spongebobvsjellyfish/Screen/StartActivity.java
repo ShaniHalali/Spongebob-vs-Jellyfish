@@ -3,11 +3,13 @@ package com.example.spongebobvsjellyfish.Screen;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.example.spongebobvsjellyfish.Models.Player;
 import com.example.spongebobvsjellyfish.R;
 import com.example.spongebobvsjellyfish.Utilities.SoundPlayer;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -38,8 +40,16 @@ public class StartActivity extends AppCompatActivity {
             // Pass fastSpeed as an extra to MainActivity
             mainIntent.putExtra("EXTRA_FAST_SPEED", fastSpeed);
             mainIntent.putExtra("EXTRA_SENSOR_MOOD", sensorMood);
-            startActivity(mainIntent);
-            finish();
+
+            if( isNameEntered()){
+                mainIntent.putExtra("EXTRA_PLAYER_NAME", start_editText_nameInput.getText().toString());
+                startActivity(mainIntent);
+                finish();
+            }
+
+            Player player=new Player();
+            player.setName(String.valueOf(start_editText_nameInput.getText()));
+
         });
 
         //---------- fast mood
@@ -66,5 +76,12 @@ public class StartActivity extends AppCompatActivity {
         start_slide_sensor = findViewById(R.id.start_slide_sensor);
         start_slide_fast = findViewById(R.id.start_slide_fast);
         start_editText_nameInput=findViewById(R.id.start_editText_nameInput);
+    }
+    private boolean isNameEntered() {
+        if(TextUtils.isEmpty(start_editText_nameInput.getText())){
+            start_editText_nameInput.setError("You must enter a name");
+            return false;
+        }
+            return true;
     }
 }

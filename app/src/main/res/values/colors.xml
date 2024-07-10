@@ -8,4 +8,7 @@
     <color name="purpule_400">#AB47BC</color>
     <color name="green_A400">#00E676</color>
     <color name="red_A400">#FF1744</color>
+    <color name="pink_100">#FFCDD2</color>
+    <color name="yellow_100">#FFF9C4</color>
+    <color name="yellow_a100">#FFFF8D</color>
 </resources>

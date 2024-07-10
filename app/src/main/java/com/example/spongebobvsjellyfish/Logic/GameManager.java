@@ -41,12 +41,15 @@ public class GameManager {
     private boolean isFastMood;
     private boolean fall=false;
     private boolean isSensorMood;
+    private String Playername;
     private MoveDetector moveDetector;
-    public GameManager(Context context,boolean isFastMood,boolean isSensorMood) {
+    public GameManager(Context context,boolean isFastMood,boolean isSensorMood,String playerName) {
         this();
         this.context = context;
         this.isFastMood=isFastMood;
         this.isSensorMood=isSensorMood;
+        this.Playername=playerName;
+
     }
 
     public GameManager() {
@@ -274,5 +277,11 @@ public class GameManager {
                 mListener.onGameLost();
             }
         }
+    }
+    public int getScore(){
+        return mScore;
+    }
+    public String getPlayername(){
+        return Playername;
     }
 }

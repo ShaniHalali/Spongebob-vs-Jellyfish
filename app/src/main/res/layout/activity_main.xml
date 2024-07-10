@@ -83,7 +83,7 @@
     </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/main_BTN_right"
+        android:id="@+id/list_BTN_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

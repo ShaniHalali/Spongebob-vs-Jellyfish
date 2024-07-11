@@ -1,12 +1,20 @@
 package com.example.spongebobvsjellyfish.Screen;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.app.ActivityCompat;
+
 import com.example.spongebobvsjellyfish.Interfaces.MoveCallback;
 import com.example.spongebobvsjellyfish.Models.Player;
 import com.example.spongebobvsjellyfish.Models.PlayerList;
@@ -18,6 +26,8 @@ import com.example.spongebobvsjellyfish.Models.SquareEntity;
 import com.example.spongebobvsjellyfish.Utilities.MoveDetector;
 import com.example.spongebobvsjellyfish.Utilities.SignalManager;
 import com.example.spongebobvsjellyfish.Utilities.SoundPlayer;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
@@ -39,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
     private boolean isSensorMood;
     private int score = 0;
     private SharedPreferences sp;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private Location currentLocation;
+    private static final int FINE_PERMISSION_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +67,35 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
         initViews();
         initGameManager(isFastMood, isSensorMood, playerName);
 
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        setCurrentLocation();
+
         SignalManager.init(this);
         initMoveDetector();
+    }
+
+    private void setCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, FINE_PERMISSION_CODE);
+            return;
+        }
+        fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, location -> {
+            if (location != null) {
+                currentLocation = location;
+            }
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == FINE_PERMISSION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                setCurrentLocation();
+            }
+        } else {
+            Toast.makeText(this, "Location permission denied, please allow the permission", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void initMoveDetector() {
@@ -194,6 +234,8 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
             Player player = playerList.getAllPlayers().get(i);
             editor.putString("name_" + i, player.getName());
             editor.putInt("score_" + i, player.getScore());
+            editor.putFloat("latitude_" + i, (float) player.getLatitude());   // Save latitude
+            editor.putFloat("longitude_" + i, (float) player.getLongitude()); // Save longitude
         }
         editor.apply();
     }
@@ -205,6 +247,8 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
         optionalPlayer.setScore(score);
         String name = gameManager.getPlayername();
         optionalPlayer.setName(name);
+        optionalPlayer.setLatitude(currentLocation.getLatitude());
+        optionalPlayer.setLongitude(currentLocation.getLongitude());
 
         // Load existing players from SharedPreferences
         PlayerList playerList = new PlayerList();
@@ -224,13 +268,13 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
         for (int i = 0; ; i++) {
             String strName = sp.getString("name_" + i, null);
             int intScore = sp.getInt("score_" + i, -1);
+            double latitude = sp.getFloat("latitude_" + i, 0);   // Latitude
+            double longitude = sp.getFloat("longitude_" + i, 0); // Longitude
             if (strName != null && intScore != -1) {
-                playerList.addPlayer(new Player().setName(strName).setScore(intScore));
+                playerList.addPlayer(new Player().setName(strName).setScore(intScore).setLatitude(latitude).setLongitude(longitude));
             } else {
                 break; // Exit the loop if no more players are found
             }
         }
     }
-
-
 }

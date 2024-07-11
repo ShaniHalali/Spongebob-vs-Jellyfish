@@ -21,6 +21,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,6 +33,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private static final int FINE_PERMISSION_CODE = 1;
     private Location currentLocation;
     private FusedLocationProviderClient fusedLocationProviderClient;
+    private Runnable onMapReadyCallback;
 
     public MapFragment() {
         // Required empty public constructor
@@ -95,10 +97,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
-    public void zoom(double lat, double lon, int position) {
-        if (myMap != null) {
-            LatLng location = new LatLng(lat, lon);
-            myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10));
+    public void  setOnMapReadyCallback(Runnable onMapReadyCallback){
+        this.onMapReadyCallback = onMapReadyCallback;
+    }
+
+    public void zoom(double lat, double lon) {
+        if (myMap == null){
+            setOnMapReadyCallback(() -> zoom(lat, lon));
         }
+
+        myMap.clear();
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(lat, lon))
+                .zoom(15)
+                .build();
+        myMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 }

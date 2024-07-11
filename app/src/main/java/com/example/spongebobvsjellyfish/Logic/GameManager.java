@@ -115,32 +115,32 @@ public class GameManager {
         synchronized (locker) {
             int fromBobfogIndex = getSpongeBobIndex();
             int toBobsfogIndex = 0;
-          //  if(!isSensorMood) {
-                switch (direction) {
-                    case LEFT: {
-                        if (fromBobfogIndex == 0) {
-                            return;
-                        }
-                        toBobsfogIndex = fromBobfogIndex - 1;
-                        break;
+            //  if(!isSensorMood) {
+            switch (direction) {
+                case LEFT: {
+                    if (fromBobfogIndex == 0) {
+                        return;
                     }
-                    case RIGHT: {
-                        if (fromBobfogIndex == COLS - 1) {
-                            return;
-                        }
-                        toBobsfogIndex = fromBobfogIndex + 1;
-                        break;
-                    }
+                    toBobsfogIndex = fromBobfogIndex - 1;
+                    break;
                 }
-                mBoard[ROWS - 1][fromBobfogIndex] = EMPTY;
-                mBoard[ROWS - 1][toBobsfogIndex] = SPONGE_BOB;
-                onUpdateBoard();
-
+                case RIGHT: {
+                    if (fromBobfogIndex == COLS - 1) {
+                        return;
+                    }
+                    toBobsfogIndex = fromBobfogIndex + 1;
+                    break;
+                }
             }
+            mBoard[ROWS - 1][fromBobfogIndex] = EMPTY;
+            mBoard[ROWS - 1][toBobsfogIndex] = SPONGE_BOB;
+            onUpdateBoard();
+
+        }
 
 
 
-      //  }
+        //  }
 
     }
     private int getJellyfishIndexByRow(int row) {

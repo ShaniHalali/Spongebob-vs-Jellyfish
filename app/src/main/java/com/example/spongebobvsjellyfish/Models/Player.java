@@ -1,19 +1,16 @@
 package com.example.spongebobvsjellyfish.Models;
 
-import java.util.ArrayList;
-
 public class Player {
-    private String name="";
-    private int score=0;
-
+    private String name;
+    private int score;
+    private double latitude;  // Ensure this is added
+    private double longitude; // Ensure this is added
 
     public String getName() {
-
         return name;
     }
 
-    public Player setName(String name)
-    {
+    public Player setName(String name) {
         this.name = name;
         return this;
     }
@@ -22,21 +19,26 @@ public class Player {
         return score;
     }
 
-    public Player setScore(int score)
-    {
+    public Player setScore(int score) {
         this.score = score;
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", score=" + score +
-                '}';
+    public double getLatitude() {
+        return latitude;
     }
 
+    public Player setLatitude(double latitude) {
+        this.latitude = latitude;
+        return this;
+    }
 
-    public Player() { //must have because of the Json
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public Player setLongitude(double longitude) {
+        this.longitude = longitude;
+        return this;
     }
 }

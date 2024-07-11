@@ -82,6 +82,6 @@ public class StartActivity extends AppCompatActivity {
             start_editText_nameInput.setError("You must enter a name");
             return false;
         }
-            return true;
+        return true;
     }
 }

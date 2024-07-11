@@ -73,14 +73,14 @@ public class ListFragment extends Fragment {
         playerAdapter = new PlayerAdapter(playerList.getAllPlayers(), callbackListItemClicked);
         fragment_list_RCW_records.setAdapter(playerAdapter);
 
-       // list_BTN_location.setOnClickListener(view -> {
+        // list_BTN_location.setOnClickListener(view -> {
 
 
-      //  });
+        //  });
     }
 
     private void findViews(View v) {
         fragment_list_RCW_records = v.findViewById(R.id.list_LST_players);
-       // list_BTN_location=v.findViewById(R.id.list_BTN_location);
+        // list_BTN_location=v.findViewById(R.id.list_BTN_location);
     }
 }

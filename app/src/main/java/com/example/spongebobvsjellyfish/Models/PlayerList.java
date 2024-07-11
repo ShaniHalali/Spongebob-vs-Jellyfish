@@ -9,8 +9,6 @@ public class PlayerList {
     private ArrayList<Player> allPlayers = new ArrayList<>();
     private int count;
     private final int MaxPlayers = 10;
-    private double longitude;
-    private double Latitude;
 
     public PlayerList() {
     }
@@ -77,32 +75,12 @@ public class PlayerList {
         return false;
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public PlayerList setLongitude(double longitude) {
-        this.longitude = longitude;
-        return this;
-    }
-
-    public double getLatitude() {
-        return Latitude;
-    }
-
-    public PlayerList setLatitude(double latitude) {
-        Latitude = latitude;
-        return this;
-    }
-
     @Override
     public String toString() {
         return "PlayerList{" +
                 "allPlayers=" + allPlayers +
                 ", count=" + count +
                 ", MaxPlayers=" + MaxPlayers +
-                ", longitude=" + longitude +
-                ", Latitude=" + Latitude +
                 '}';
     }
 }

@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
     private SoundPlayer soundPlayer;
     private MaterialTextView game_LBL_score;
     private MoveDetector moveDetector;
-    private boolean isFastMood;
-    private boolean isSensorMood;
+    private boolean isFastMode;
+    private boolean isSensorMode;
     private int score = 0;
     private SharedPreferences sp;
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -61,11 +61,11 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
 
         findViews();
 
-        isFastMood = getIntent().getBooleanExtra("EXTRA_FAST_SPEED", false);
-        isSensorMood = getIntent().getBooleanExtra("EXTRA_SENSOR_MOOD", false);
+        isFastMode = getIntent().getBooleanExtra("EXTRA_FAST_SPEED", false);
+        isSensorMode = getIntent().getBooleanExtra("EXTRA_SENSOR_MOOD", false);
         String playerName = getIntent().getStringExtra("EXTRA_PLAYER_NAME");
         initViews();
-        initGameManager(isFastMood, isSensorMood, playerName);
+        initGameManager(isFastMode, isSensorMode, playerName);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         setCurrentLocation();
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
     protected void onPause() {
         super.onPause();
         soundPlayer.stopSoundGame(R.raw.game);
-        if (isSensorMood) {
+        if (isSensorMode) {
             moveDetector.stop();
         }
     }
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
         super.onResume();
         soundPlayer = new SoundPlayer(this);
         soundPlayer.playSoundGame(R.raw.game);
-        if (isSensorMood) {
+        if (isSensorMode) {
             moveDetector.start();
         }
     }
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
     }
 
     private void initViews() {
-        if (!isSensorMood) {
+        if (!isSensorMode) {
             main_BTN_left.setOnClickListener(view -> gameManager.updateSpongebobPlace(Direction.LEFT));
             main_BTN_right.setOnClickListener(view -> gameManager.updateSpongebobPlace(Direction.RIGHT));
         } else {

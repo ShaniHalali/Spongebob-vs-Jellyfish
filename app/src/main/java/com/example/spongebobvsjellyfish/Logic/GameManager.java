@@ -38,18 +38,18 @@ public class GameManager {
     private SoundPlayer soundPlayer;
     private Context context;
     private int  mScore=0;
-    private boolean isFastMood;
+    private boolean isFastMode;
     private boolean fall=false;
-    private boolean isSensorMood;
+    private boolean isSensorMode;
     private String Playername;
     private MoveDetector moveDetector;
-    public GameManager(Context context,boolean isFastMood,boolean isSensorMood,String playerName) {
+    public GameManager(Context context,boolean isFastMode,boolean isSensorMode,String playerName) {
         this();
         this.context = context;
-        this.isFastMood=isFastMood;
-        this.isSensorMood=isSensorMood;
+        this.isFastMode =isFastMode;
+        this.isSensorMode =isSensorMode;
         this.Playername=playerName;
-        if(isFastMood){
+        if(isFastMode){
             TICK_TIMER=400L;
         };
     }
@@ -104,7 +104,7 @@ public class GameManager {
               //  };
                 if (!shouldStop) {
                     moveEntities();
-                    if(!isFastMood){
+                    if(!isFastMode){
 
                     }
                     handler.postDelayed(this, TICK_TIMER);

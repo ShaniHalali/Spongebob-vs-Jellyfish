@@ -25,7 +25,7 @@ Uses SharedPreferences to save and load game data.
 
 **Google Map Integration:** The app records the location of each player who achieves a top 10 score. Users can view a Google map within the app that displays markers indicating where these players played the game.
 
-**How to Play**
+# How to play
 1. Start the Game: Choose your preferred modes:
 
 Fast Mode: Would you like to play the game faster? Toggle this option to increase the game's speed and difficulty.

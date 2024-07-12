@@ -103,19 +103,25 @@ public class MainActivity extends AppCompatActivity implements BoardUpdateListen
                 new MoveCallback() {
                     @Override
                     public void moveRight() {
+
                         gameManager.updateSpongebobPlace(Direction.RIGHT);
                     }
 
                     @Override
                     public void moveLeft() {
+
                         gameManager.updateSpongebobPlace(Direction.LEFT);
                     }
 
                     @Override
-                    public void moveUp() {}
+                    public void moveUp() {
+                        gameManager.updateSpongebobPlace(Direction.UP);
+                    }
 
                     @Override
-                    public void moveDown() {}
+                    public void moveDown() {
+                        gameManager.updateSpongebobPlace(Direction.DOWN);
+                    }
                 }
         );
     }

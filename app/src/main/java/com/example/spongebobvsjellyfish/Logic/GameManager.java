@@ -49,7 +49,9 @@ public class GameManager {
         this.isFastMood=isFastMood;
         this.isSensorMood=isSensorMood;
         this.Playername=playerName;
-
+        if(isFastMood){
+            TICK_TIMER=400L;
+        };
     }
 
     public GameManager() {
@@ -97,9 +99,9 @@ public class GameManager {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(isFastMood){
-                    TICK_TIMER=400L;
-                };
+               // if(isFastMood){
+               //     TICK_TIMER=400L;
+              //  };
                 if (!shouldStop) {
                     moveEntities();
                     if(!isFastMood){
@@ -114,35 +116,39 @@ public class GameManager {
     public void updateSpongebobPlace(Direction direction) {
         synchronized (locker) {
             int fromBobfogIndex = getSpongeBobIndex();
-            int toBobsfogIndex = 0;
-            //  if(!isSensorMood) {
+            int toBobsfogIndex = fromBobfogIndex; // Start with the current index
+
             switch (direction) {
                 case LEFT: {
-                    if (fromBobfogIndex == 0) {
-                        return;
+                    if (fromBobfogIndex > 0) {
+                        toBobsfogIndex = fromBobfogIndex - 1;
                     }
-                    toBobsfogIndex = fromBobfogIndex - 1;
                     break;
                 }
                 case RIGHT: {
-                    if (fromBobfogIndex == COLS - 1) {
-                        return;
+                    if (fromBobfogIndex < COLS - 1) {
+                        toBobsfogIndex = fromBobfogIndex + 1;
                     }
-                    toBobsfogIndex = fromBobfogIndex + 1;
+                    break;
+                }
+                case UP: {
+                    TICK_TIMER = Math.max(400L, TICK_TIMER - 300L);
+                    break;
+                }
+                case DOWN: {
+                    TICK_TIMER = Math.min(1300L, TICK_TIMER + 300L);
                     break;
                 }
             }
-            mBoard[ROWS - 1][fromBobfogIndex] = EMPTY;
-            mBoard[ROWS - 1][toBobsfogIndex] = SPONGE_BOB;
-            onUpdateBoard();
 
+            if (toBobsfogIndex != fromBobfogIndex) {
+                mBoard[ROWS - 1][fromBobfogIndex] = EMPTY;
+                mBoard[ROWS - 1][toBobsfogIndex] = SPONGE_BOB;
+                onUpdateBoard();
+            }
         }
-
-
-
-        //  }
-
     }
+
     private int getJellyfishIndexByRow(int row) {
         for (int i = 0; i < COLS; i++) {
             if (mBoard[row][i] == JELLY_FISH) {

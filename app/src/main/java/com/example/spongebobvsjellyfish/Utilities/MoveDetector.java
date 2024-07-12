@@ -68,12 +68,12 @@ public class MoveDetector {
                     moveCallback.moveRight();
                 }
             }
-            if (y > 4.0) {
+            if (y < 3.0) {
                 moveCountY++;
                 if (moveCallback != null) {
                     moveCallback.moveUp();
                 }
-            }if (y < -4.0) {
+            }else if (y > -3.0) {
                 moveCountY--;
                 if (moveCallback != null) {
                     moveCallback.moveDown();

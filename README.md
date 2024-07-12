@@ -12,6 +12,8 @@ This adds a competitive element to the game, allowing users to strive for better
 # Features
 The "Spongebob vs Jellyfish" app offers several amazing features to enhance the gaming experience:
 
+**Animation** Pre-Menu Animation - Before reaching the main menu, players will see an engaging animation that sets the tone for the game!
+
 **Control by sensors Options:** Players have the flexibility to choose between using buttons (default) or turn on the sensors mood to control the Spongebob character in the game. 
 Sensor mode allows players to tilt their device left or right to maneuver the character,tilt their device up or down to change the game speed.
 offering a more interactive and immersive gaming experience.

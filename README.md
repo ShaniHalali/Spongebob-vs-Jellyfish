@@ -43,18 +43,19 @@ Uses SharedPreferences to save and load game data.
 5. Check the Records Table: View the top 10 players scores and their locations on the table to see how you stack up against other players.
 
 # ScreenShots
+Pre-Menu Animation:
 
 Start menu screen:
-![WhatsApp Image 2024-03-02 at 17 26 24](https://github.com/Lioravraham5/MessiVsRonaldoGame/assets/159531151/35fb1528-93e8-49b1-a74e-98f3c612d92d)
+![Screenshot_20240712_165614_Spongebob Vs Jellyfish.jpg](..%2F..%2FDesktop%2F%F9%F0%E4%20%E1%20%F1%EE%F1%E8%F8%20%E1%2F%F4%E9%FA%E5%E7%20%E9%E9%F9%E5%EE%E9%20%F1%EC%E5%EC%F8%2FScreenshot_20240712_165614_Spongebob%20Vs%20Jellyfish.jpg)
+Game screen with arrows:
+![Screenshot_20240712_165431_Spongebob Vs Jellyfish.jpg](..%2F..%2FDesktop%2F%F9%F0%E4%20%E1%20%F1%EE%F1%E8%F8%20%E1%2F%F4%E9%FA%E5%E7%20%E9%E9%F9%E5%EE%E9%20%F1%EC%E5%EC%F8%2FScreenshot_20240712_165431_Spongebob%20Vs%20Jellyfish.jpg)
 
-Game screen:
-![WhatsApp Image 2024-03-02 at 17 26 24 (2)](https://github.com/Lioravraham5/MessiVsRonaldoGame/assets/159531151/0bdd9aff-6157-481e-b934-ca26cddec3ef)
-
+Game screen - sensors mode on: 
+![Screenshot_20240712_165640_Spongebob Vs Jellyfish.jpg](..%2F..%2FDesktop%2F%F9%F0%E4%20%E1%20%F1%EE%F1%E8%F8%20%E1%2F%F4%E9%FA%E5%E7%20%E9%E9%F9%E5%EE%E9%20%F1%EC%E5%EC%F8%2FScreenshot_20240712_165640_Spongebob%20Vs%20Jellyfish.jpg)
 Game over screen:
-![WhatsApp Image 2024-03-02 at 17 26 25](https://github.com/Lioravraham5/MessiVsRonaldoGame/assets/159531151/6e5d845c-36cf-4ae7-b6fd-c92faffd31aa)
-
+![Screenshot_20240712_165454_Spongebob Vs Jellyfish.jpg](..%2F..%2FDesktop%2F%F9%F0%E4%20%E1%20%F1%EE%F1%E8%F8%20%E1%2F%F4%E9%FA%E5%E7%20%E9%E9%F9%E5%EE%E9%20%F1%EC%E5%EC%F8%2FScreenshot_20240712_165454_Spongebob%20Vs%20Jellyfish.jpg)
 Top 10 record screen:
-![WhatsApp Image 2024-03-02 at 17 26 24 (3)](https://github.com/Lioravraham5/MessiVsRonaldoGame/assets/159531151/c10652e8-5bc2-499e-8463-d58a9a920ae8)
+![Screenshot_20240712_132035_Spongebob Vs Jellyfish.jpg](..%2F..%2FDesktop%2F%F9%F0%E4%20%E1%20%F1%EE%F1%E8%F8%20%E1%2F%F4%E9%FA%E5%E7%20%E9%E9%F9%E5%EE%E9%20%F1%EC%E5%EC%F8%2FScreenshot_20240712_132035_Spongebob%20Vs%20Jellyfish.jpg)
 
 
 

@@ -45,17 +45,27 @@ Uses SharedPreferences to save and load game data.
 # ScreenShots
 Pre-Menu Animation:
 
+<img src="https://github.com/user-attachments/assets/66bdd684-284c-45bc-b2df-2ae81b8f4175" alt="WelcomePage" width="25%" height="25%">
+
 Start menu screen:
-![Screenshot_20240712_165614_Spongebob Vs Jellyfish.jpg](..%2F..%2FDesktop%2F%F9%F0%E4%20%E1%20%F1%EE%F1%E8%F8%20%E1%2F%F4%E9%FA%E5%E7%20%E9%E9%F9%E5%EE%E9%20%F1%EC%E5%EC%F8%2FScreenshot_20240712_165614_Spongebob%20Vs%20Jellyfish.jpg)
+
+<img src="https://github.com/user-attachments/assets/432ee152-4135-4e8d-b926-945f5e196e05" alt="WelcomePage" width="25%" height="25%">
+
 Game screen with arrows:
-![Screenshot_20240712_165431_Spongebob Vs Jellyfish.jpg](..%2F..%2FDesktop%2F%F9%F0%E4%20%E1%20%F1%EE%F1%E8%F8%20%E1%2F%F4%E9%FA%E5%E7%20%E9%E9%F9%E5%EE%E9%20%F1%EC%E5%EC%F8%2FScreenshot_20240712_165431_Spongebob%20Vs%20Jellyfish.jpg)
+
+<img src="https://github.com/user-attachments/assets/43938178-9305-4ba7-b145-4749799decc4" alt="WelcomePage" width="25%" height="25%">
 
 Game screen - sensors mode on: 
-![Screenshot_20240712_165640_Spongebob Vs Jellyfish.jpg](..%2F..%2FDesktop%2F%F9%F0%E4%20%E1%20%F1%EE%F1%E8%F8%20%E1%2F%F4%E9%FA%E5%E7%20%E9%E9%F9%E5%EE%E9%20%F1%EC%E5%EC%F8%2FScreenshot_20240712_165640_Spongebob%20Vs%20Jellyfish.jpg)
+
+<img src="https://github.com/user-attachments/assets/198a2e9b-5eb5-4882-967b-21b1d171f31f" alt="WelcomePage" width="25%" height="25%">
+
 Game over screen:
-![Screenshot_20240712_165454_Spongebob Vs Jellyfish.jpg](..%2F..%2FDesktop%2F%F9%F0%E4%20%E1%20%F1%EE%F1%E8%F8%20%E1%2F%F4%E9%FA%E5%E7%20%E9%E9%F9%E5%EE%E9%20%F1%EC%E5%EC%F8%2FScreenshot_20240712_165454_Spongebob%20Vs%20Jellyfish.jpg)
+
+<img src="https://github.com/user-attachments/assets/5f416732-01e3-4fc9-97fd-548841643b2e" alt="WelcomePage" width="25%" height="25%">
+
 Top 10 record screen:
-![Screenshot_20240712_132035_Spongebob Vs Jellyfish.jpg](..%2F..%2FDesktop%2F%F9%F0%E4%20%E1%20%F1%EE%F1%E8%F8%20%E1%2F%F4%E9%FA%E5%E7%20%E9%E9%F9%E5%EE%E9%20%F1%EC%E5%EC%F8%2FScreenshot_20240712_132035_Spongebob%20Vs%20Jellyfish.jpg)
+
+<img src="https://github.com/user-attachments/assets/39beee5d-f2d7-4b4d-8d12-c271333efa32" alt="WelcomePage" width="25%" height="25%">
 
 
 

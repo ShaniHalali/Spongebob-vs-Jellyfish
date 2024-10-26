@@ -1,6 +1,6 @@
-#24B-11345A
-# Spongebob vs Jellyfish game
+# Spongebob vs Jellyfish game 🪼🧽🌊
 This is an assigment project for Android Application Development course, in Afeka - the academic college of Engineering in Tel Aviv.
+Final Grade : 100
 
 # Overview
 The "Spongebob vs Jellyfish" app is an obstacle game where the user controls Spongebob and needs to avoid obstacles represented by Jellyfish!
@@ -30,9 +30,9 @@ Uses SharedPreferences to save and load game data.
 # How to play
 1. Start the Game: Choose your preferred modes:
 
-                 Fast Mode: Would you like to play the game faster? Toggle this option to increase the game's speed and difficulty.
+   Fast Mode: Would you like to play the game faster? Toggle this option to increase the game's speed and difficulty.
 
-                 Sensor Mode: Opt for sensor-based controls if you prefer to tilt your device to steer Spongebob and adjust the game speed. Otherwise, turn it off to use arrows only to move Spongebob right or left.
+    Sensor Mode: Opt for sensor-based controls if you prefer to tilt your device to steer Spongebob and adjust the game speed. Otherwise, turn it off to use arrows only to move Spongebob right or left.
 
 2. Navigate Spongebob: Move Spongebob to avoid jellyfish and collect Krabby Patties to earn points.
 

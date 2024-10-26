@@ -1,5 +1,6 @@
 # Spongebob vs Jellyfish game 🪼🧽🌊
-This is an assigment project for Android Application Development course, in Afeka - the academic college of Engineering in Tel Aviv.
+This is an assigment project for Android Application Development course, in Afeka - the academic college of Engineering in Tel Aviv. 
+
 Final Grade : 100
 
 # Overview
